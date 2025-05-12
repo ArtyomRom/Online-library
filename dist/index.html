@@ -2,6 +2,35 @@
 
 {% block content %}
 <div class="container mt-6">
+      <!-- Навигация по страницам -->
+    <nav>
+        <ul class="pagination justify-content-center">
+            <!-- Предыдущая страница -->
+            {% if page_num > 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="output{{ page_num - 1 }}.html">← Назад</a>
+                </li>
+            {% endif %}
+
+            <!-- Номера страниц -->
+            {% for i in range(1, total_pages + 1) %}
+                <li class="page-item {% if i == page_num %}active{% endif %}">
+                    {% if i == 1 %}
+                        <a class="page-link" href="output.html">{{ i }}</a>
+                    {% else %}
+                        <a class="page-link" href="output{{ i }}.html">{{ i }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+
+            <!-- Следующая страница -->
+            {% if page_num < total_pages %}
+                <li class="page-item">
+                    <a class="page-link" href="output{{ page_num + 1 }}.html">Вперёд →</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
     <div class="row mb-4">
         {% for book in books %}
             <div class="col-sm-6">

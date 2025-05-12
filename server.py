@@ -13,4 +13,4 @@ server.watch('dist/output.html')
 
 
 # Запускаем сервер и открываем output.html
-server.serve(root='.', open_url_delay=1, default_filename='dist/output.html')
+server.serve(root='dist', open_url_delay=1, default_filename='output.html')
