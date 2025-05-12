@@ -1,10 +1,14 @@
 from jinja2 import Environment, FileSystemLoader
 import json
 import os
+import urllib.parse
+
 
 # Загружаем данные
 with open('meta_data.json', encoding='utf-8') as f:
     books = json.load(f)
+    for book in books:
+        book['book_path'] = urllib.parse.quote(book['book_path'])
 
 # Инициализируем Jinja2, указывая путь к шаблонам
 env = Environment(loader=FileSystemLoader('dist'))
