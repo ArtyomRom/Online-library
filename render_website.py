@@ -16,7 +16,7 @@ with open('meta_data.json', encoding='utf-8') as f:
 env = Environment(loader=FileSystemLoader('docs'))
 
 # Загружаем шаблон index.html (который наследуется от template.html)
-template = env.get_template('index.html')
+template = env.get_template('output.html')
 
 pages = list(chunked(books, BOOKS_PER_PAGE))
 total_pages = len(pages)
@@ -25,7 +25,7 @@ os.makedirs('docs', exist_ok=True)
 
 # ✅ Рендерим и сохраняем КАЖДУЮ страницу
 for page_num, books_chunk in enumerate(pages, start=1):
-    output_filename = f'output{page_num}.html' if page_num > 1 else 'output.html'
+    output_filename = f'index{page_num}.html' if page_num > 1 else 'index.html'
     output_path = os.path.join('docs', output_filename)
 
     html_output = template.render(
