@@ -6,9 +6,13 @@
     <nav>
         <ul class="pagination justify-content-center">
             <!-- Предыдущая страница -->
-            {% if page_num > 1 %}
+            {% if page_num > 2 %}
                 <li class="page-item">
                     <a class="page-link" href="output{{ page_num - 1 }}.html">← Назад</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="output.html">← Назад</a>
                 </li>
             {% endif %}
 
